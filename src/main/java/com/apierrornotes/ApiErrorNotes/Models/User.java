@@ -15,9 +15,12 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    private Long id;
     private String nom,prenom;
     private Long contacts;
-    private String role_user;
+    private String mdp;
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }
