@@ -37,5 +37,9 @@ public class ProblemeController {
         return "Utilisateur supprimé avec succès";
     }
 
+    @GetMapping("/recherche/{mot_cle}")
+    Object recherche(@PathVariable String mot_cle){
+        return problemeService.recherche(mot_cle);
+    }
 
 }
