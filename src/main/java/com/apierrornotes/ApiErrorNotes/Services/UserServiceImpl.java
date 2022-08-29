@@ -15,10 +15,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public String creer(User user) {
         if(userRepo.existsByEmail(user.getEmail())){
-            return "Cet utilisateur existe deja";
+            return "Cet utilisateur existe deja !!";
         }
         userRepo.save(user);
-        return "Utilisateur enregistré";
+        return "Utilisateur enregistré !!";
     }
 
     @Override
