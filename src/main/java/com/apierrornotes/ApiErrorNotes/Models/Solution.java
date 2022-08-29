@@ -3,6 +3,7 @@ package com.apierrornotes.ApiErrorNotes.Models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,5 +19,12 @@ public class Solution {
     private Long id_solution;
     private String description,ressource,methodologie;
     private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @Autowired
+    private User user;
+
+
 
 }
