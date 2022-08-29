@@ -19,5 +19,5 @@ public class Probleme {
 
     private Long id_probleme;
     private String titre;
-    private String description, Technologie;
+    private String description, technologie;
 }

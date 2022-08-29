@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
                     u.setContacts(user.getContacts());
                     u.setRole(user.getRole());
                     return userRepo.save(u);
-                }).orElseThrow(() -> new RuntimeException("Population non trouvée !"));
+                }).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé !"));
     }
 
 
