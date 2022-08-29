@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public interface ProblemeService {
 
-    Probleme creer (Probleme probleme);
+    String creer (Probleme probleme);
     List<Probleme> lire();
-    Probleme modifier (Long id,Probleme probleme);
+    Probleme modifier (Long id_probleme,Probleme probleme);
 
     //Rechercher par mot clé
 

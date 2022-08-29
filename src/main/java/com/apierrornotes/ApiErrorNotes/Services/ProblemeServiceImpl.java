@@ -2,17 +2,20 @@ package com.apierrornotes.ApiErrorNotes.Services;
 
 import com.apierrornotes.ApiErrorNotes.Models.Probleme;
 import com.apierrornotes.ApiErrorNotes.Repository.ProblemeRepo;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@AllArgsConstructor
 public class ProblemeServiceImpl implements ProblemeService {
 
-    ProblemeRepo problemeRepo;
+    private final ProblemeRepo problemeRepo;
 
     @Override
-    public Probleme creer(Probleme probleme) {
-        return problemeRepo.save(probleme);
+    public String creer(Probleme probleme) {
+        problemeRepo.save(probleme);
+        return"Probleme creéé";
     }
 
 
