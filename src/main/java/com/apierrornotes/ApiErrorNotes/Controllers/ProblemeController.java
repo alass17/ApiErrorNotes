@@ -21,7 +21,7 @@ public class ProblemeController {
         return problemeService.lire();
     }
 
-    @PostMapping("/ajouter")
+    @PostMapping("/create")
     public String create(@RequestBody Probleme probleme) {
         problemeService.creer(probleme);
         return "Votre problème a été ajouté avec succès !!";
