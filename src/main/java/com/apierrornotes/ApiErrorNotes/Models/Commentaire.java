@@ -16,6 +16,8 @@ public class Commentaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_commentaire;
+
+    @Column(length = 100,nullable = false)
     private String description;
 
     @ManyToOne

@@ -19,8 +19,12 @@ public class Probleme {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id_probleme;
+    @Column(length = 50,nullable = false)
     private String titre;
-    private String description, technologie;
+    @Column(length = 100,nullable = false)
+    private String description;
+    @Column(length = 50,nullable = false)
+    private String technologie;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
