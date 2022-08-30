@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -42,6 +43,22 @@ public class UserServiceImpl implements UserService {
                     u.setRole(user.getRole());
                     return userRepo.save(u);
                 }).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé !"));
+    }
+
+    @Override
+    public String sedeconnecter() {
+        return "deconnecter avec succès";
+    }
+
+    @Override
+    public User Seconnecter(String email, String mdp) {
+        Optional<User> user= userRepo.findByEmailAndMdp(email,mdp);
+        // TTT
+        if (user.isPresent()){
+            return null;
+        }
+        return user.get();
+
     }
 
 

@@ -19,10 +19,9 @@ public class User {
     @Column(length = 50,nullable = false)
     private String nom,prenom;
     private Long contacts;
-    @Column(length = 10,nullable = false)
+
     private String mdp;
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
-
 }
