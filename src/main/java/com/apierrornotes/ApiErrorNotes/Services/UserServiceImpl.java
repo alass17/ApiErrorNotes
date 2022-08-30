@@ -13,6 +13,10 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
 
+    /* Vérification au moment de la connexion d'un utilisateur
+     si son Email et Mot de passe sont correct
+
+      */
     @Override
     public String creer(User user) {
         if(userRepo.existsByEmail(user.getEmail())){
@@ -21,6 +25,7 @@ public class UserServiceImpl implements UserService {
         userRepo.save(user);
         return "Utilisateur enregistré !!";
     }
+
 
     @Override
     public List<User> lire() {

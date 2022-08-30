@@ -18,9 +18,6 @@ public interface UserRepo extends JpaRepository<User,Long> {
      */
     boolean existsByEmail(String email);
 
-     /* Vérification au moment de la connexion d'un utilisateur
-     si son Email et Mot de passe sont correct
-
-      */
+     // Permet à l'utilisateur de se connecter
     Optional<User> findByEmailAndMdp(String email, String mdp);
 }
