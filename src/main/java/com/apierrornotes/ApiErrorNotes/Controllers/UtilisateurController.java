@@ -38,8 +38,18 @@ public class UtilisateurController {
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
-         userService.Supprimer(id);
+        userService.Supprimer(id);
         return "Utilisateur supprimé avec succès";
+    }
+
+    @GetMapping("/connexion/{email}/{mdp}")
+    public String connexion(@PathVariable("email") String email, @PathVariable("mdp") String mdp) {
+        if (this.userService.Seconnecter(email, mdp) == null) {
+            return "failed";
+        }
+        this.userService.Seconnecter(email, mdp);
+        return "vous etes connectée";
+
     }
 
 }

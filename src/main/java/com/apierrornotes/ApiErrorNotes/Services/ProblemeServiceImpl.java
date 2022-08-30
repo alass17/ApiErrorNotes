@@ -3,6 +3,7 @@ package com.apierrornotes.ApiErrorNotes.Services;
 import com.apierrornotes.ApiErrorNotes.Models.Probleme;
 import com.apierrornotes.ApiErrorNotes.Repository.ProblemeRepo;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public class ProblemeServiceImpl implements ProblemeService {
     private final ProblemeRepo problemeRepo;
 
     @Override
-    public String creer(Probleme probleme) {
-        problemeRepo.save(probleme);
-        return"Probleme creéé";
+    public Probleme creer(Probleme probleme) {
+
+        return problemeRepo.save(probleme);
     }
 
 
@@ -39,6 +40,12 @@ public class ProblemeServiceImpl implements ProblemeService {
 
 
     //L'implémentation de la méthode recherche avec les conditions
+
+    @Override
+    public String Supprimer(Long id_probleme) {
+        return "Probleme supprimé !!";
+    }
+
     @Override
     public Object recherche(String mot_cle) {
         if (mot_cle != null) {
@@ -53,10 +60,6 @@ public class ProblemeServiceImpl implements ProblemeService {
 
     }
 
-    @Override
-    public String Supprimer(Long id_probleme) {
-        return "Probleme supprimé !!";
-    }
 
 }
 

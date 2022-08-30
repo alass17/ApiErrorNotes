@@ -8,7 +8,19 @@ import java.util.Optional;
 public interface UserRepo extends JpaRepository<User,Long> {
 
 
+    /* Vérification au moment d'inscription d'un utilisateur
+    si son contact donné éxiste déjà dans la base de donnée
+     */
     boolean existsByContacts(Long contacts);
 
+ /* Vérification au moment d'inscription d'un utilisateur si
+  l'email donné éxiste déjà dans la base  de donnée
+     */
     boolean existsByEmail(String email);
+
+     /* Vérification au moment de la connexion d'un utilisateur
+     si son Email et Mot de passe sont correct
+
+      */
+    Optional<User> findByEmailAndMdp(String email, String mdp);
 }

@@ -10,6 +10,8 @@ public interface UserService {
     List<User> lire();
     String Supprimer (Long id);
     User modifier(Long id, User user);
+    String sedeconnecter();
+    User Seconnecter(String email,String mdp);
 
 
 
