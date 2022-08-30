@@ -6,12 +6,15 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepo userRepo;
 
+
+    //Cette condition nous permet de verifier par email si utilisateur exixte dans la base de donnée
     @Override
     public String creer(User user) {
         if(userRepo.existsByEmail(user.getEmail())){
@@ -43,6 +46,29 @@ public class UserServiceImpl implements UserService {
                     return userRepo.save(u);
                 }).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé !"));
     }
+
+    @Override
+    public String sedeconnecter() {
+        return "deconnecter avec succès";
+    }
+
+    @Override
+    public String Seconnecter(String email, String mdp) {
+        User user = userRepo.findByEmailAndMdp(email,mdp);
+        if (user == null) return "Failed !";
+        else return "Connecté avec succès !";
+    }
+
+    /*@Override
+    public User Seconnecter(String email, String mdp) {
+        Optional<User> user= userRepo.findByEmailAndMdp(email,mdp);
+        // TTT
+        if (user.isPresent()){
+            return null;
+        }
+        return user.get();
+
+    }*/
 
 
 }

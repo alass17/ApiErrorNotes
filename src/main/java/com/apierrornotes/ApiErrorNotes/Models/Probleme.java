@@ -25,6 +25,8 @@ public class Probleme {
     private String description;
     @Column(length = 50,nullable = false)
     private String technologie;
+    @Column(length = 50,nullable = false)
+    private  String etat;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
