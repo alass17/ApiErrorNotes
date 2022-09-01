@@ -23,6 +23,12 @@ public class UtilisateurController {
         return userService.creer(user);
     }
 
+    @PostMapping("/createC")
+    public String createC(@RequestBody User user) {
+        return userService.creerCompte(user);
+    }
+
+
 
     @GetMapping("/read")
     public List<User> read(User user) {
@@ -63,12 +69,11 @@ public class UtilisateurController {
 
     @GetMapping("/connexion/{email}/{mdp}")
     public String connexion(@PathVariable("email") String email, @PathVariable("mdp") String mdp) {
-        /*if (this.userService.Seconnecter(email, mdp) == null) {
+        if (this.userService.Seconnecter(email, mdp) == null) {
             return "failed";
         }
         this.userService.Seconnecter(email, mdp);
-        return "vous etes connectée";*/
-        return userService.Seconnecter(email,mdp);
+        return "vous etes connectée";
 
     }
 
