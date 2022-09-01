@@ -1,5 +1,6 @@
 package com.apierrornotes.ApiErrorNotes.Services;
 
+import com.apierrornotes.ApiErrorNotes.Models.Role;
 import com.apierrornotes.ApiErrorNotes.Models.User;
 import com.apierrornotes.ApiErrorNotes.Repository.UserRepo;
 import lombok.AllArgsConstructor;
@@ -33,10 +34,23 @@ public class UserServiceImpl implements UserService {
         }
         else {
             user.setMdp(passwordEncoder().encode(user.getMdp()));
-            userRepo.save(user);
             return "Utilisateur enregistré !!";
         }
 
+    }
+    //
+
+    public String creerCompte(User user) {
+
+        if (userRepo.existsByEmail(user.getEmail())) {
+
+            return "Cet utilisateur existe deja !!";
+        } else {
+            user.setMdp(passwordEncoder().encode(user.getMdp()));
+            user.setRole(Role.ROLE_USER);
+            userRepo.save(user);
+            return "Utilisateur enregistré !!";
+        }
     }
 
     @Override

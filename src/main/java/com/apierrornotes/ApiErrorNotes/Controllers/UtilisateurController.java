@@ -5,7 +5,6 @@ import com.apierrornotes.ApiErrorNotes.Repository.UserRepo;
 import com.apierrornotes.ApiErrorNotes.Services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +22,12 @@ public class UtilisateurController {
         return userService.creer(user);
     }
 
+    @PostMapping("/createC")
+    public String createC(@RequestBody User user) {
+        return userService.creerCompte(user);
+    }
+
+
 
     @GetMapping("/read")
     public List<User> read(User user) {
@@ -30,9 +35,27 @@ public class UtilisateurController {
     }
 
 
-    @PutMapping("/update/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
-        return userService.modifier(id, user);
+    @PutMapping("/update/email/{id}")
+    public String update(@PathVariable Long id, @PathVariable String email, @RequestBody User user) {
+        User user1 = userRepo.findByEmail(email);
+        Long IdUserPost = user1.getId();
+
+        if (IdUserPost == id)
+        {
+            userService.modifier(id,user);
+            return "Vous etes utilisateurs de ce compte et vous l'avez modifier";
+        }
+        else if(user.getRole().equals("ROLE_ADMIN"))
+        {
+            userService.modifier(id,user);
+            return "Compte modifier par l'administrateur avec succès";
+        }
+
+        else
+        {
+            return "Impossible de supprimer un compte d'autrui";
+        }
+
 
     }
 
@@ -63,12 +86,11 @@ public class UtilisateurController {
 
     @GetMapping("/connexion/{email}/{mdp}")
     public String connexion(@PathVariable("email") String email, @PathVariable("mdp") String mdp) {
-        /*if (this.userService.Seconnecter(email, mdp) == null) {
+        if (this.userService.Seconnecter(email, mdp) == null) {
             return "failed";
         }
         this.userService.Seconnecter(email, mdp);
-        return "vous etes connectée";*/
-        return userService.Seconnecter(email,mdp);
+        return "vous etes connectée";
 
     }
 
