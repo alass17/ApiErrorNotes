@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RequestMapping("/commentaire/")
 @RestController
 @AllArgsConstructor
-
 public class CommentaireController {
     @Autowired
     private final CommentaireService commentaireService;
