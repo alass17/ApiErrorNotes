@@ -52,6 +52,8 @@ public class UserServiceImpl implements UserService {
         return "deconnecter avec succès";
     }
 
+    /*Cette condition nous permet de nous connecter en verifiant si l'adresse et le mdp
+     existe dans la base de donnéé*/
     @Override
     public String Seconnecter(String email, String mdp) {
         User user = userRepo.findByEmailAndMdp(email,mdp);

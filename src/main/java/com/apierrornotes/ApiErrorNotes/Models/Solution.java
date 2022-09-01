@@ -17,11 +17,11 @@ public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_solution;
-    @Column(length = 150,nullable = false)
+    //@Column(length = 150,nullable = false)
     private String description;
-    @Column(length = 150,nullable = false)
+  //  @Column(length = 150,nullable = false)
     private String ressource;
-    @Column(length = 100,nullable = false)
+    //@Column(length = 100,nullable = false)
     private String methodologie;
     private Date date;
 

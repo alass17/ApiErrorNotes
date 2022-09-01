@@ -1,6 +1,8 @@
 package com.apierrornotes.ApiErrorNotes.Services;
 
+import com.apierrornotes.ApiErrorNotes.Models.Probleme;
 import com.apierrornotes.ApiErrorNotes.Models.Solution;
+import com.apierrornotes.ApiErrorNotes.Models.User;
 import com.apierrornotes.ApiErrorNotes.Repository.SolutionRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 
-public class SolutionServiceImpl implements SolutionService{
+public class SolutionServiceImpl implements SolutionService {
     @Autowired
     private final SolutionRepo solutionRepo;
 

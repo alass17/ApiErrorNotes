@@ -1,5 +1,6 @@
 package com.apierrornotes.ApiErrorNotes.Services;
 
+import com.apierrornotes.ApiErrorNotes.Models.Probleme;
 import com.apierrornotes.ApiErrorNotes.Models.Solution;
 import com.apierrornotes.ApiErrorNotes.Models.User;
 
@@ -10,4 +11,5 @@ public interface SolutionService {
     List<Solution> lire();
     String Supprimer (Long id_solution);
     Solution modifier(Long id_solution, Solution solution);
+
 }
