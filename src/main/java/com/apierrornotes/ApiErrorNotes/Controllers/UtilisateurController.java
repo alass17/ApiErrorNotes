@@ -17,7 +17,7 @@ public class UtilisateurController {
 
     @Autowired
     private final UserService userService;
-
+    private final UserRepo userRepo;
     @PostMapping("/create")
     public String create(@RequestBody User user) {
         return userService.creer(user);
@@ -36,11 +36,30 @@ public class UtilisateurController {
 
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        userService.Supprimer(id);
-        return "Utilisateur supprimé avec succès";
-    }
+    @DeleteMapping("/delete/{email}/{id}")
+        public String  delete (@PathVariable("email") String email, @PathVariable Long id){
+
+            User user = userRepo.findByEmail(email);
+            Long IdUserPost = user.getId();
+
+            if (IdUserPost == id)
+            {
+                userService.Supprimer(id);
+                return "Vous etes utilisateurs de ce compte et vous l'avez supprimer";
+            }
+            else if(user.getRole().equals("ROLE_ADMIN"))
+            {
+                userService.Supprimer(id);
+                return "Compte supprimer par l'administrateur avec succès";
+            }
+
+            else
+            {
+                return "Impossible de supprimer un compte d'autrui";
+            }
+
+
+        }
 
     @GetMapping("/connexion/{email}/{mdp}")
     public String connexion(@PathVariable("email") String email, @PathVariable("mdp") String mdp) {
