@@ -12,6 +12,5 @@ public interface ProblemeRepo extends JpaRepository<Probleme,Long> {
     @Query(value = "SELECT * FROM probleme WHERE probleme.titre LIKE %?1%" +
             " OR probleme.description LIKE %?1%"+
             " OR probleme.technologie LIKE %?1%", nativeQuery = true)
-
     List<Probleme> findAll(String mot_cle);
 }

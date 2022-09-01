@@ -15,5 +15,5 @@ public interface UserService {
     String Seconnecter(String email,String mdp);
 
 
-
+    String creerCompte(User user);
 }
